@@ -13,10 +13,10 @@ exports.list = async function(req, res) {
         const response =await rc.getLatestEmoji(since);
 
         res.json({
+          "text": response,
           "attachments": [
             {
               "title": "Rocket.Chat",
-              "text": response,
             }
           ]
         })
