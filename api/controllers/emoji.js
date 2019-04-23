@@ -14,12 +14,7 @@ exports.list = async function(req, res) {
 
         res.json({
           "text": response,
-          "attachments": [
-            {
-              "title": "Rocket.Chat",
-            }
-          ]
-        })
+         })
       } catch (e) {
         res.sendStatus(500)
       }
