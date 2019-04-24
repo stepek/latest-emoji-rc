@@ -29,7 +29,8 @@ exports.getLatestEmoji = async since => {
     return emojis
       .filter(emoji => moment(emoji._updatedAt).valueOf() > sinceTimestamp)
       .sort((a, b) => moment(a._updatedAt).valueOf() - moment(b._updatedAt).valueOf())
-      .map(emoji => `:${emoji.name}:`).reduce((a,b) => `${a} ${b}`);
+      .map(emoji => `:${emoji.name}:`)
+      .reduce((a,b) => `${a} ${b}`, '');
   } catch (e) {
     console.log(e);
   }
