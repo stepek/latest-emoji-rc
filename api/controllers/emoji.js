@@ -16,7 +16,9 @@ exports.list = async function(req, res) {
           "text": response,
          })
       } catch (e) {
-        res.sendStatus(500)
+        res.json({
+          "text": '500: i co? jesteś z siebie dumny?',
+        });
       }
       return;
     }
