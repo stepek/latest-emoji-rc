@@ -26,9 +26,14 @@ exports.getLatestEmoji = async since => {
     const emojis = (await data.json()).emojis;
     const sinceTimestamp = moment().subtract(amount, unit).valueOf();
 
-    return emojis
+    const latestEmojis = emojis
       .filter(emoji => moment(emoji._updatedAt).valueOf() > sinceTimestamp)
       .sort((a, b) => moment(a._updatedAt).valueOf() - moment(b._updatedAt).valueOf())
+    if (latestEmojis.length === 0) {
+      return 'Not found :sad_pepe:';
+    }
+
+    return latestEmojis
       .map(emoji => `:${emoji.name}:`)
       .reduce((a,b) => `${a} ${b}`, '');
   } catch (e) {
